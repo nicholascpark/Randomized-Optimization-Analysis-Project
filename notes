@@ -1,0 +1,75 @@
+The People's Requirements for Assignment 2
+
+I figured it might be helpful to try to piece together how we can do well on assignment 2 based on the clues we've seen so far. To that end I've put together some requirements for Assignment 2 that I believe were expressed through office hours. See the new requirements and sources below.
+
+(Disclaimer: These are simply my notes from office hours 5 and 6. You should not rely upon these forward-looking statements as predictions of future grades. I have based these statements primarily on my own subjective interpretations of Office Hour comments and discussion. The outcome of following these statements as requirements is subject to risks, uncertainties, and other factors. I cannot assure you that the results, events and circumstances of following these recommendations will be positive for you. Your mileage may vary.
+
+Also relevant: the professor warns about the dangers of looking for a simple set of checkboxes that will straightforwardly lead you to a specific score and grade when what we are actually being asked to do is something more akin to research. https://piazza.com/class/kdx36x23bcer4?cid=417_f3 . )
+
+Office Hours 5, Assignment 2
+
+ 
+
+    For the neural network part of the assignment, you must describe/analyze why the randomized optimization method you selected performs better or worse than backpropagation for your selected problem.
+    Cross-validation is not a requirement.
+    Do not use vanilla hill climbing. You must use random-restart hill climbing.
+    When evaluating the performance of the randomized optimization methods, you want at least these 2 plots: "fitness vs iterations" and "fitness vs evaluations". (One plot charts the number of times the algorithm has to call the fitness function, which may happen more than once per iteration, and the other plot charts the number of iterations. Both are charted against fitness).
+        EDIT: several students have expressed doubt about this as a requirement. See some discussion below ( @430_f4 )
+    For the neural network part of the assignment: because we want to compare the performance of each random optimization algorithm on their ability to find good weights, we should make sure the comparison is "fair". That means we are required to perform a grid search that finds the best possible hyper-parameters. In the paper we must say what our final hyper-parameters were for each random optimizer; we must explain how we arrived at those final hyper-parameters (which is grid-search), and a couple of plots or tables to show how the hyper-parameter tuning was done. No learning curves or model complexity curves are required. But we need some comparison between the different hyper-parameters we had, why we chose these final hyper-parameters, what those hyper-parameters mean, how we think they would affect the performance, and so on. (confusingly, in office hours 6 @ 22:20 it is said that we do not need analysis of hyper-parameters. The instructor answer in @397 clarifies we do need these plots and discussion for the RO algorithms, but only for the first part of the assignment, not the neural network part). In either case the hyper-parameters should give the best performance we can find for that RO.
+    The problems must be discrete problems and be represented with bit strings.
+    Probably more of a hint than a requirement: in general, randomized hill climbing should perform worse than the other 3 algos. If some advantage is highlighted by random-restart hill climbing, some other algo should also have that same advantage.
+    Use the same neural network structure (same number of hidden layers, same number of neurons in each layer, same activation function) as in Assignment 1. Other hyper-parameters of the neural network like learning rate still need tuning, and should therefore be part of the grid search mentioned in reqt 5 above.
+    If you're using mlrose or ABAGAIL, then use that library's implementation of the neural network, for fair comparison.
+    Use random seeds in your code so that the experiments are replicable.
+    In part 2, you should compare Random-Restart Hill Climbing, Simulated Annealing, and Genetic Algorithms with one another as well as with backpropagation. Compare them in terms of runtime, as well as whatever metric of interest you used in HW1.
+
+Timestamp sources:
+
+    02:14
+    04:30
+    05:50
+    09:37
+    11:35
+    14:30
+    15:07
+    16:18. See also 08:30 of OH6
+    20:23
+    23:30
+    39:30
+
+Office Hours 6, Assignment 2
+
+    In part 1, (comparing 4 Random Optimization algorithms), there is no need to do any sort of test/train splitting (concept does not apply here).
+    In part 2, however we do split the data. For each RO, fit the neural network on your training data until convergence (and chart how quickly convergence occurs on the training data). Compare also the performance of each final neural network on the test data.
+    Reiteration of above requirement: "We want some sort of plot that shows convergence. Perhaps that would be like something like a loss curve or something."
+    "You need to focus very much on how the performance of your neural network changes with respect to the number of iterations and wall-clock time." (see also 39:20)
+    You can modify your NN architecture from HW1 if you want, but you'll need to re-run your HW1 experiments so you have a valid comparison in your A2 report. @313_f3
+    We should (very likely) conclude that backprop is better than our RO algorithms. "There's a reason we use gradient descent, that's not a randomized algorithm". We should also discuss when we think backprop would be better. And "better" should be discussed in terms of runtime (to convergence) as well as performance. 
+    Up to you to determine stopping criteria for Part 1, RO. Not every RO will find the global maximum -- they can get stuck! Implication is that the stopping criteria are that you stop running the RO either when it gets stuck, terminates on its own, or finds the global maximum.
+    Don't run the ROs just once. Try them on many different random seeds, (10 seeds, 20 seeds, and then average the results).
+    One other stopping criteria for the ROs: stop when the fitness function "doesn't change much" … "over the last n iterations".
+    For part 1, one alternative to plotting # function evaluations against fitness is # function evaluations against input size.
+    "The only requirement that we had was you definitely want to do fitness score or performance against iterations. That was the one we definitely want to see. Anything on top of that is to strengthen your analysis."
+    "Performance against the size of the problem (so having some sort of graph that's varying the size of the problem) is also something we require."
+    For each of the three RO problems, the hyper-parameters for that problem should be re-tuned specifically for that problem. "What works for one problem might not work for another one."
+    "Do we need to discuss the parameter tuning process? Yes. […] For the optimization (part 1) problems […] it needs to be more than just discussion. It needs to be curves and everything." For the neural network problems "it's okay if you discuss but it has to be in detail because you would need to discuss the hyper-parameters of the randomized optimization in addition to the hyper-parameters of the neural network itself."
+    "Do we need to discuss the meaning of the parameters?" Yes. Don't describe the algorithm itself but provide some practical perspective on what's happening as you adjust the hyper-parameters. Don't simply discuss what the hyper-parameter does, that's not very useful. If it's giving you better results, why do you think that is?
+
+Timestamp sources
+
+    01:20
+    07:49
+    10:04
+    10:46
+    11:15
+    18:19
+    23:20
+    24:20
+    25:40
+    28:00
+    38:26
+    39:27
+    40:34
+    45:48
+    46:24
+
